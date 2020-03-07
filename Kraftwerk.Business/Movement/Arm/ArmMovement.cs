@@ -1,19 +1,16 @@
 ﻿using Kraftwerk.ValueObjects.Arm;
 using Kraftwerk.ValueObjects.Robot;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Kraftwerk.Business.Movement.Arm
 {
     public class ArmMovement : IArmMovement
     {
-        public bool ChangeElbowMovement(ArmVO arm, ElbowMovement newElbowMovement)
+        public bool ChangeElbowMovement(ArmVO arm, ElbowMovement elbowMovement)
         {
             return true;
         }
 
-        public bool ChangeWristMovement(ArmVO arm, WristMovement newWristMovement)
+        public bool ChangeWristMovement(ArmVO arm, WristMovement wristMovement)
         {
             if (arm.Elbow != ElbowMovement.StronglyContracted)
             {
@@ -22,5 +19,30 @@ namespace Kraftwerk.Business.Movement.Arm
 
             return true;
         }
+
+        public bool CanMoveArm(RobotVO robot, ArmVO armMoved, ArmSide armSide)
+        {
+            ArmVO arm = armSide == ArmSide.Left ? robot.LeftArm : robot.RightArm;
+
+            bool isElbowMovement = IsElbowMovement(arm, armMoved.Elbow);
+            bool isWristMovement = IsWristMovement(arm, armMoved.Wrist);
+
+            // Não se pode mexer mais de uma parte do braço por vez
+            if (isElbowMovement && isWristMovement)
+                return false;
+
+            if (isElbowMovement)
+                return ChangeElbowMovement(arm, armMoved.Elbow);
+
+            if (isWristMovement)
+                return ChangeWristMovement(arm, armMoved.Wrist);
+
+            //Não houve mudança
+            return true;
+        }
+
+        private bool IsElbowMovement(ArmVO arm, ElbowMovement elbowMovement) => arm.Elbow != elbowMovement;
+
+        private bool IsWristMovement(ArmVO arm, WristMovement wristMovement) => arm.Wrist != wristMovement;
     }
 }

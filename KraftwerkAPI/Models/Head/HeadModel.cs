@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Kraftwerk.ValueObjects.Head;
 
-namespace Kraftwerk.Models.Head
+namespace KraftwerkAPI.Models.Head
 {
     public class HeadModel
     {

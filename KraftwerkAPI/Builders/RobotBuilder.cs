@@ -1,10 +1,9 @@
-﻿using Kraftwerk.Models.Arm;
-using Kraftwerk.Models.Head;
-using Kraftwerk.Models.Robot;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Kraftwerk.ValueObjects.Arm;
+using Kraftwerk.ValueObjects.Head;
+using KraftwerkAPI.Helpers;
+using KraftwerkAPI.Models;
+using KraftwerkAPI.Models.Arm;
+using KraftwerkAPI.Models.Head;
 
 namespace KraftwerkAPI.Builders
 {
@@ -20,34 +19,20 @@ namespace KraftwerkAPI.Builders
 
         public RobotBuilder WithHead()
         {
-            _robot.Head = new HeadModel() 
-            {
-                HeadInclination = HeadInclination.InRest,
-                HeadRotation = HeadRotation.InRest
-            };
-
+            _robot.Head = RobotHelper.CreadDefaultHead();
             return this;
         }
 
         public RobotBuilder WithLeftArm()
         {
-            _robot.LeftArm = CreateDefaultArm();
+            _robot.LeftArm = RobotHelper.CreateDefaultArm();
             return this;
         }
 
         public RobotBuilder WithRightArm()
         {
-            _robot.RightArm = CreateDefaultArm();
+            _robot.RightArm = RobotHelper.CreateDefaultArm();
             return this;
-        }
-
-        private ArmModel CreateDefaultArm()
-        {
-            return new ArmModel()
-            {
-                Elbow = ElbowMovement.InRest,
-                Wrist = WristMovement.InRest
-            };
         }
 
         public RobotModel Get()

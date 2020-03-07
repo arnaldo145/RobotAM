@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kraftwerk.Models.Head
+namespace Kraftwerk.ValueObjects.Head
 {
     public enum HeadInclination
     {
