@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Kraftwerk.ValueObjects.Arm
+{
+    public enum ElbowMovement
+    {
+        InRest = 1,
+        SlightlyContracted = 2,
+        Contracted = 3,
+        StronglyContracted = 4
+    }
+}
