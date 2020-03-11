@@ -1,0 +1,60 @@
+﻿@model MoroderWebApp.Models.Robot.RobotModel
+
+@{
+    ViewData["Title"] = $"Robô {Model.Id}";
+}
+
+<div class="container">
+    <div class="card border-0">
+        <div class="card-header border-0">
+            <h5 class="card-title text-center">
+                 Cabeça do Robô
+                 <i class="fab fa-android"></i>
+            </h5>
+             
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3 border text-center head-controls-panel">
+                    <h6>Rotação</h6>
+
+                    <button id="rotate-robot-to-left" type="button" class="btn btn-outline-dark btn-sm">
+                        <i class="fas fa-undo"></i>
+                    </button>
+
+                    <button id="rotate-robot-to-right" type="button" class="btn btn-outline-dark btn-sm">
+                        <i class="fas fa-redo-alt"></i>
+                    </button>
+
+                </div>
+
+                <div class="col-3 border align-items-center d-flex justify-content-center">
+                     <span id="head-rotation">@Model.Head.HeadRotationDescription</span>
+                </div>
+
+                <div class="col-3 border align-items-center d-flex justify-content-center">
+                     <span id="head-inclination">@Model.Head.HeadInclinationDescription</span>
+                </div>
+
+                <div class="col-3 border text-center head-controls-panel">
+                    <h6>Inclinação</h6>
+
+                    <button id="robot-tilt-up" type="button" class="btn btn-outline-dark btn-sm">
+                        <i class="fas fa-arrow-up"></i>
+                    </button>
+                    <button id="robot-tilt-down" type="button" class="btn btn-outline-dark btn-sm">
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const rotateHeadToLeftUrl = '@Url.Action("RotateHeadToLeft", "Robot", new { id = Model.Id })';
+    const rotateHeadToRightUrl = '@Url.Action("RotateHeadToRight", "Robot", new { id = Model.Id })';
+    const tiltUpHeadUrl = '@Url.Action("TiltUpHead", "Robot", new { id = Model.Id })';
+    const tiltDownHeadUrl =  '@Url.Action("TiltDownHead", "Robot", new { id = Model.Id })';
+</script>

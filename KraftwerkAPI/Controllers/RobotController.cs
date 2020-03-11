@@ -21,20 +21,16 @@ namespace KraftwerkAPI.Controllers
     public class RobotController : ControllerBase
     {
         private readonly RobotContext _context;
-        private readonly RobotBuilder _robotBuilder;
-        private readonly RobotReset _robotReset;
         private readonly IMapper _mapper;
         private readonly IArmMovement _armMovement;
         private readonly IHeadMovement _headMovement;
 
-        public RobotController(RobotContext context, IMapper mapper)
+        public RobotController(RobotContext context, IMapper mapper, IArmMovement armMovement, IHeadMovement headMovement)
         {
             _context = context;
             _mapper = mapper;
-            _armMovement = new ArmMovement();
-            _headMovement = new HeadMovement();
-            _robotBuilder = new RobotBuilder();
-            _robotReset = new RobotReset();
+            _armMovement = armMovement;
+            _headMovement = headMovement;
         }
 
         // GET: api/Robot
@@ -63,6 +59,7 @@ namespace KraftwerkAPI.Controllers
             return CreatedAtAction("PostRobotModel", new { id = robot.Id }, robot);
         }
 
+        // POST: api/Robot/5
         [HttpPost("{id}")]
         public async Task<ActionResult<RobotModel>> PostRobotModel(long id)
         {
@@ -71,7 +68,9 @@ namespace KraftwerkAPI.Controllers
             if (robot is null)
                 return NotFound();
 
-            _robotReset.Reset(robot);
+            RobotReset robotReset = new RobotReset();
+            robotReset.Reset(robot);
+
             _context.Entry(robot).State = EntityState.Modified;
 
             try
@@ -118,7 +117,7 @@ namespace KraftwerkAPI.Controllers
             var canMoveHead = _headMovement.CanMoveHead(robotVO, headMovedVO);
 
             if (canMoveHead == false)
-                return BadRequest();
+                return BadRequest(new { canMoveHead });
 
             robot.Head = headMoved;
 
@@ -133,7 +132,7 @@ namespace KraftwerkAPI.Controllers
                 throw;
             }
 
-            return NoContent();
+            return Ok(new { canMoveHead });
         }
 
         // PUT: api/Robot/5/LeftArm
@@ -240,7 +239,9 @@ namespace KraftwerkAPI.Controllers
         [NonAction]
         private RobotModel CreateDefaultRobot()
         {
-            return _robotBuilder
+            RobotBuilder robotBuilder = new RobotBuilder();
+
+            return robotBuilder
                 .CreateRobot()
                 .WithHead()
                 .WithLeftArm()

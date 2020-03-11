@@ -69,3 +69,21 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/* Robots Table
+-------------------------------------------------- */
+
+.robots-table{
+  margin: 2.5% 0;
+}
+
+.btn-delete-robot{
+  width: 100px;
+}
+
+/* Robots Controls
+-------------------------------------------------- */
+
+.head-controls-panel{
+  padding: 25px 0;
+}

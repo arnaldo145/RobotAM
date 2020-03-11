@@ -1,4 +1,6 @@
 using AutoMapper;
+using Kraftwerk.Business.Movement.Arm;
+using Kraftwerk.Business.Movement.Head;
 using KraftwerkAPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,7 +13,6 @@ namespace KraftwerkAPI
 {
     public class Startup
     {
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -22,6 +23,9 @@ namespace KraftwerkAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IArmMovement, ArmMovement>();
+            services.AddSingleton<IHeadMovement, HeadMovement>();
+
             services.AddControllers().AddNewtonsoftJson();
 
             services.AddDbContext<RobotContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));

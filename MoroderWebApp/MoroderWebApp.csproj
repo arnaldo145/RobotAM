@@ -4,6 +4,19 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kraftwerk.Business\Kraftwerk.Business.csproj" />
+    <ProjectReference Include="..\Kraftwerk.ValueObjects\Kraftwerk.ValueObjects.csproj" />
+    <ProjectReference Include="..\Moroder.Business\Moroder.Business.csproj" />
+  </ItemGroup>
+
 
 
 </Project>

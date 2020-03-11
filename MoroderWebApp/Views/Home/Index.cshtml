@@ -1,19 +1,46 @@
-﻿@{
+﻿@model IEnumerable<Kraftwerk.ValueObjects.Robot.RobotVO>
+
+@{
     ViewData["Title"] = "Home";
 }
 
 <div class="container">
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-             <h1 class="display-4 text-center">Moroder</h1>
-              <p class="lead text-center">Gerencie seus robôs com facilidade</p>
+            <h1 class="display-4 text-center">Moroder</h1>
+            <p class="lead text-center">Gerencie seus robôs com facilidade</p>
         </div>
     </div>
 
     <div>
-        <a class="btn btn-outline-primary" href="#" role="button">Criar Robô</a>
+        <a class="btn btn-outline-secondary" href="#" role="button">
+           <i class="fas fa-plus"></i>
+            Criar Robô
+        </a>
     </div>
 
     <div>
+
+        <table class="robots-table table table-bordered">
+            <tbody>
+                @foreach (var robot in Model)
+                {
+                    <tr class="">
+                        <td class="col-8">
+
+                           @Html.ActionLink($"Robô { robot.Id }", "Index", "Robot", new { id = robot.Id}, new { @class = "text-secondary"} )
+                        </td>
+
+                        <td class="col-4">
+                            <a class="btn btn-outline-secondary btn-delete-robot" href="#" role="button">
+                                <i class="fas fa-trash fa-sm"></i>
+                                Excluir
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
     </div>
 </div>

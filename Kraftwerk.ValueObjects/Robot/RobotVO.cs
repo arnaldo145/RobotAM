@@ -1,8 +1,5 @@
 ﻿using Kraftwerk.ValueObjects.Arm;
 using Kraftwerk.ValueObjects.Head;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Kraftwerk.ValueObjects.Robot
 {

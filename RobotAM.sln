@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KraftwerkAPI", "KraftwerkAP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kraftwerk.Tests", "Kraftwerk.Tests\Kraftwerk.Tests.csproj", "{7239B020-3900-456A-9C9C-C90A124997BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kraftwerk.Business", "Kraftwerk.Business\Kraftwerk.Business.csproj", "{5C2284C6-BFC4-42CC-A9E4-FCF32FC38EEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kraftwerk.Business", "Kraftwerk.Business\Kraftwerk.Business.csproj", "{5C2284C6-BFC4-42CC-A9E4-FCF32FC38EEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kraftwerk.ValueObjects", "Kraftwerk.ValueObjects\Kraftwerk.ValueObjects.csproj", "{4FE15A5E-E409-4ACE-B31F-49EFF64FA9EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kraftwerk.ValueObjects", "Kraftwerk.ValueObjects\Kraftwerk.ValueObjects.csproj", "{4FE15A5E-E409-4ACE-B31F-49EFF64FA9EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moroder.Business", "Moroder.Business\Moroder.Business.csproj", "{B6F6861A-7AA2-4D04-A2A0-4BA8894FEA0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{4FE15A5E-E409-4ACE-B31F-49EFF64FA9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FE15A5E-E409-4ACE-B31F-49EFF64FA9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FE15A5E-E409-4ACE-B31F-49EFF64FA9EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6F6861A-7AA2-4D04-A2A0-4BA8894FEA0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6F6861A-7AA2-4D04-A2A0-4BA8894FEA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6F6861A-7AA2-4D04-A2A0-4BA8894FEA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6F6861A-7AA2-4D04-A2A0-4BA8894FEA0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{7239B020-3900-456A-9C9C-C90A124997BA} = {19C8889F-86A1-4FA3-8C51-C8DA5BDB52C2}
 		{5C2284C6-BFC4-42CC-A9E4-FCF32FC38EEB} = {2875886E-4166-4CFB-9BC3-E8A15EF27268}
 		{4FE15A5E-E409-4ACE-B31F-49EFF64FA9EF} = {2875886E-4166-4CFB-9BC3-E8A15EF27268}
+		{B6F6861A-7AA2-4D04-A2A0-4BA8894FEA0A} = {2875886E-4166-4CFB-9BC3-E8A15EF27268}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F059F69-337D-4A45-AC88-5345DCFCFAAE}

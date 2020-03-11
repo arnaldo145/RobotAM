@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Moroder.Business.Services;
 using MoroderWebApp.Models;
 
 namespace MoroderWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IRobotService _robotService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IRobotService robotService)
         {
-            _logger = logger;
+            _robotService = robotService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var robots = _robotService.GetRobots();
+            return View(robots);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -10,8 +10,8 @@ namespace Kraftwerk.Business.Movement.Head
     {
         public bool CanMoveHead(RobotVO robot, HeadVO headMoved)
         {
-            var isInclinationMovement = IsInclinationMovement(robot, headMoved.HeadInclination);
-            var isRotationMovement = IsRotationMovement(robot, headMoved.HeadRotation);
+            bool isInclinationMovement = IsInclinationMovement(robot, headMoved.HeadInclination);
+            bool isRotationMovement = IsRotationMovement(robot, headMoved.HeadRotation);
 
             // Não pode haver dois movimentos de uma vez
             if (isInclinationMovement && isRotationMovement)
@@ -27,10 +27,7 @@ namespace Kraftwerk.Business.Movement.Head
             return true;
         }
 
-        public bool ChangeInclination(RobotVO robot, HeadInclination headInclination)
-        {
-            return true;
-        }
+        public bool ChangeInclination(RobotVO robot, HeadInclination headInclination) => true;
 
         public bool ChangeRotation(RobotVO robot, HeadRotation headRotation)
         {
