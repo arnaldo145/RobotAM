@@ -13,8 +13,8 @@
     </div>
 
     <div>
-        <a class="btn btn-outline-secondary" href="#" role="button">
-           <i class="fas fa-plus"></i>
+        <a class="btn btn-outline-secondary" href="@Url.Action("CreateRobot", "Home")" role="button">
+            <i class="fas fa-plus"></i>
             Criar Robô
         </a>
     </div>
@@ -28,19 +28,21 @@
                     <tr class="">
                         <td class="col-8">
 
-                           @Html.ActionLink($"Robô { robot.Id }", "Index", "Robot", new { id = robot.Id}, new { @class = "text-secondary"} )
+                            @Html.ActionLink($"Robô { robot.Id }", "Index", "Robot", new { id = robot.Id }, new { @class = "text-secondary" })
                         </td>
 
                         <td class="col-4">
-                            <a class="btn btn-outline-secondary btn-delete-robot" href="#" role="button">
+
+                            <button type="button" class="btn btn-outline-secondary btn-delete-robot" robot-id="@robot.Id">
                                 <i class="fas fa-trash fa-sm"></i>
                                 Excluir
-                            </a>
+                            </button>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
-
     </div>
 </div>
+
+<partial name="_DeleteRobot">

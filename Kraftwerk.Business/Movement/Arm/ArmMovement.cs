@@ -5,17 +5,12 @@ namespace Kraftwerk.Business.Movement.Arm
 {
     public class ArmMovement : IArmMovement
     {
-        public bool ChangeElbowMovement(ArmVO arm, ElbowMovement elbowMovement)
-        {
-            return true;
-        }
+        public bool ChangeElbowMovement(ArmVO arm, ElbowMovement elbowMovement) => true;
 
         public bool ChangeWristMovement(ArmVO arm, WristMovement wristMovement)
         {
             if (arm.Elbow != ElbowMovement.StronglyContracted)
-            {
                 return false;
-            }
 
             return true;
         }

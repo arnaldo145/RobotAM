@@ -9,7 +9,7 @@ namespace Kraftwerk.ValueObjects.Arm
     {
         [Description("Em repouso")]
         InRest = 1,
-        [Description("Levement contraído")]
+        [Description("Levemente contraído")]
         SlightlyContracted = 2,
         [Description("Contraído")]
         Contracted = 3,

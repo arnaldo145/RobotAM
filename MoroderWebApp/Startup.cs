@@ -28,8 +28,6 @@ namespace MoroderWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IRobotService, RobotService>();
-            services.AddSingleton<IHeadMovement, HeadMovement>();
-            services.AddSingleton<IArmMovement, ArmMovement>();
             services.AddControllersWithViews();
             services.AddAutoMapper(typeof(Startup));
         }

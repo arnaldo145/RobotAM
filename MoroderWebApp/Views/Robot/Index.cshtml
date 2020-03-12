@@ -8,10 +8,9 @@
     <div class="card border-0">
         <div class="card-header border-0">
             <h5 class="card-title text-center">
-                 Cabeça do Robô
-                 <i class="fab fa-android"></i>
+                Cabeça do Robô
+                <i class="fab fa-android"></i>
             </h5>
-             
         </div>
 
         <div class="card-body">
@@ -30,11 +29,11 @@
                 </div>
 
                 <div class="col-3 border align-items-center d-flex justify-content-center">
-                     <span id="head-rotation">@Model.Head.HeadRotationDescription</span>
+                    <span id="head-rotation">@Model.Head.HeadRotationDescription</span>
                 </div>
 
                 <div class="col-3 border align-items-center d-flex justify-content-center">
-                     <span id="head-inclination">@Model.Head.HeadInclinationDescription</span>
+                    <span id="head-inclination">@Model.Head.HeadInclinationDescription</span>
                 </div>
 
                 <div class="col-3 border text-center head-controls-panel">
@@ -50,11 +49,118 @@
             </div>
         </div>
     </div>
+
+    <div class="card border-0">
+        <div class="card-header border-0">
+            <h5 class="card-title text-center">
+                Braços do Robô
+                <i class="fas fa-child"></i>
+            </h5>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3 border">
+                    <div class="row">
+                        <div class="col-12 border-bottom arms-controls-panel text-center">
+
+                            <h6>Cotovelo - Esquerdo</h6>
+
+                            <button id="increase-left-elbow" type="button" class="btn btn-outline-dark btn-sm">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <button id="decrease-left-elbow" type="button" class="btn btn-outline-dark btn-sm">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <div class="col-12 arms-controls-panel text-center">
+
+                            <h6>Pulso - Esquerdo</h6>
+
+                            <button id="rotate-to-left-left-wrist" type="button" class="btn btn-outline-dark btn-sm">
+                                <i class="fas fa-undo"></i>
+                            </button>
+
+                            <button id="rotate-to-right-left-wrist" type="button" class="btn btn-outline-dark btn-sm">
+                                <i class="fas fa-redo-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 border">
+                    <div class="row">
+                        <div class="col-12 border-bottom align-items-center d-flex justify-content-center arms-controls-panel">
+                            <span id="left-elbow">@Model.LeftArm.ElbowDescription</span>
+                        </div>
+
+                        <div class="col-12  align-items-center d-flex justify-content-center arms-controls-panel">
+                            <span id="left-wrist">@Model.LeftArm.WristDescription</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 border">
+                    <div class="row">
+                        <div class="col-12 border-bottom align-items-center d-flex justify-content-center arms-controls-panel">
+                            <span id="right-elbow">@Model.RightArm.ElbowDescription</span>
+                        </div>
+
+                        <div class="col-12  align-items-center d-flex justify-content-center arms-controls-panel">
+                            <span id="right-wrist">@Model.RightArm.WristDescription</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 border">
+                    <div class="row">
+                        <div class="col-12 border-bottom arms-controls-panel text-center">
+
+                            <h6>Cotovelo - Direito</h6>
+
+                            <button id="increase-right-elbow" type="button" class="btn btn-outline-dark btn-sm">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <button id="decrease-right-elbow" type="button" class="btn btn-outline-dark btn-sm">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <div class="col-12 arms-controls-panel text-center">
+
+                            <h6>Pulso - Direito</h6>
+
+                            <button id="rotate-to-left-right-wrist" type="button" class="btn btn-outline-dark btn-sm">
+                                <i class="fas fa-undo"></i>
+                            </button>
+                            <button id="rotate-to-right-right-wrist" type="button" class="btn btn-outline-dark btn-sm">
+                                <i class="fas fa-redo-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">
     const rotateHeadToLeftUrl = '@Url.Action("RotateHeadToLeft", "Robot", new { id = Model.Id })';
     const rotateHeadToRightUrl = '@Url.Action("RotateHeadToRight", "Robot", new { id = Model.Id })';
+
     const tiltUpHeadUrl = '@Url.Action("TiltUpHead", "Robot", new { id = Model.Id })';
-    const tiltDownHeadUrl =  '@Url.Action("TiltDownHead", "Robot", new { id = Model.Id })';
+    const tiltDownHeadUrl = '@Url.Action("TiltDownHead", "Robot", new { id = Model.Id })';
+
+    const stretchLeftElbowUrl = '@Url.Action("StretchLeftElbow", "Robot", new { id = Model.Id })';
+    const relaxLeftElbowUrl = '@Url.Action("RelaxLeftElbow", "Robot", new { id = Model.Id })';
+
+    const stretchRightElbowUrl = '@Url.Action("StretchRightElbow", "Robot", new { id = Model.Id })';
+    const relaxRightElbowUrl = '@Url.Action("RelaxRightElbow", "Robot", new { id = Model.Id })';
+
+    const rotateToLeftLeftWristUrl = '@Url.Action("RotateToLeftLeftWrist", "Robot", new { id = Model.Id })';
+    const rotateToRightLeftWristUrl = '@Url.Action("RotateToRightLeftWrist", "Robot", new { id = Model.Id })';
+
+    const rotateToLeftRightWristUrl = '@Url.Action("RotateToLeftRightWrist", "Robot", new { id = Model.Id })';
+    const rotateToRightRightWrist = '@Url.Action("RotateToRightRightWrist", "Robot", new { id = Model.Id })';
 </script>

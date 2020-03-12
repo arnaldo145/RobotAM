@@ -1,55 +1,19 @@
 $("#rotate-robot-to-left").click(function () {
-    rotateRobotHead(rotateHeadToLeftUrl);
+    let componentId = "#head-rotation";
+    updateComponentText(rotateHeadToLeftUrl, componentId);
 });
 
 $("#rotate-robot-to-right").click(function () {
-    rotateRobotHead(rotateHeadToRightUrl);
+    let componentId = "#head-rotation";
+    updateComponentText(rotateHeadToRightUrl, componentId);
 });
 
-function rotateRobotHead(url) {
-    $.ajax({
-        type: "POST",
-        url: url,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: refreshRotation
-    });
-
-    function refreshRotation(data) {
-        let isValidMovement = data.isValidMovement;
-
-        if (isValidMovement === true) {
-            $("#head-rotation").text(data.description);
-        } else {
-            alert("Movimento inválido!");
-        }
-    }
-}
-
 $("#robot-tilt-up").click(function () {
-    changeInclinationRobotHead(tiltUpHeadUrl);
+    let componentId = "#head-inclination";
+    updateComponentText(tiltUpHeadUrl, componentId);
 });
 
 $("#robot-tilt-down").click(function () {
-    changeInclinationRobotHead(tiltDownHeadUrl);
+    let componentId = "#head-inclination";
+    updateComponentText(tiltDownHeadUrl, componentId);
 });
-
-function changeInclinationRobotHead(url) {
-    $.ajax({
-        type: "POST",
-        url: url,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: refreshInclination
-    });
-
-    function refreshInclination(data) {
-        let isValidMovement = data.isValidMovement;
-
-        if (isValidMovement === true) {
-            $("#head-inclination").text(data.description);
-        } else {
-            alert("Movimento inválido!");
-        }
-    }
-}

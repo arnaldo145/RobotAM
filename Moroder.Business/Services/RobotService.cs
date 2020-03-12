@@ -89,14 +89,22 @@ namespace Moroder.Business.Services
             return robotResult.Id;
         }
 
-        public RobotVO PostRobot(long id)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool DeleteRobot(long id)
         {
-            throw new NotImplementedException();
+            bool isRobotDeleted = false; 
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(_kraftwerkAPIUrl);
+
+                Task<HttpResponseMessage> deleteTask = client.DeleteAsync($"api/Robot/{id}");
+                deleteTask.Wait();
+
+                HttpResponseMessage result = deleteTask.Result;
+                isRobotDeleted = result.IsSuccessStatusCode;
+            }
+
+            return isRobotDeleted;
         }
 
         public bool PutHead(long id, HeadVO headMoved)
@@ -107,20 +115,15 @@ namespace Moroder.Business.Services
             {
                 client.BaseAddress = new Uri(_kraftwerkAPIUrl);
 
-                //HTTP POST
-                var putTask = client.PutAsJsonAsync<HeadVO>($"api/Robot/{id}/Head", headMoved);
+                Task<HttpResponseMessage> putTask = client.PutAsJsonAsync<HeadVO>($"api/Robot/{id}/Head", headMoved);
                 putTask.Wait();
 
-                var result = putTask.Result;
+                HttpResponseMessage result = putTask.Result;
 
                 if (result.IsSuccessStatusCode)
-                {
                     isHeadMoved = true;
-                }
-                else if(result.StatusCode == HttpStatusCode.BadRequest)
-                {
+                else if (result.StatusCode == HttpStatusCode.BadRequest)
                     isHeadMoved = false;
-                }
             }
 
             return isHeadMoved;
@@ -128,12 +131,46 @@ namespace Moroder.Business.Services
 
         public bool PutLeftArm(long id, ArmVO leftArmMoved)
         {
-            throw new NotImplementedException();
+            bool isLeftArmMoved = false;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(_kraftwerkAPIUrl);
+
+                var putTask = client.PutAsJsonAsync<ArmVO>($"api/Robot/{id}/LeftArm", leftArmMoved);
+                putTask.Wait();
+
+                var result = putTask.Result;
+
+                if (result.IsSuccessStatusCode)
+                    isLeftArmMoved = true;
+                else if (result.StatusCode == HttpStatusCode.BadRequest)
+                    isLeftArmMoved = false;
+            }
+
+            return isLeftArmMoved;
         }
 
         public bool PutRightArm(long id, ArmVO rightArmMoved)
         {
-            throw new NotImplementedException();
+            bool isRightArmMoved = false;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(_kraftwerkAPIUrl);
+
+                var putTask = client.PutAsJsonAsync<ArmVO>($"api/Robot/{id}/LeftArm", rightArmMoved);
+                putTask.Wait();
+
+                var result = putTask.Result;
+
+                if (result.IsSuccessStatusCode)
+                    isRightArmMoved = true;
+                else if (result.StatusCode == HttpStatusCode.BadRequest)
+                    isRightArmMoved = false;
+            }
+
+            return isRightArmMoved;
         }
 
         public HeadVO GetHead(long id)

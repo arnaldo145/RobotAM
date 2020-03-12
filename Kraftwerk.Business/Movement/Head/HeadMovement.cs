@@ -1,8 +1,5 @@
 ﻿using Kraftwerk.ValueObjects.Head;
 using Kraftwerk.ValueObjects.Robot;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Kraftwerk.Business.Movement.Head
 {

@@ -13,7 +13,6 @@ namespace Moroder.Business.Services
         IEnumerable<RobotVO> GetRobots();
         RobotVO GetRobot(long id);
         long PostRobot();
-        RobotVO PostRobot(long id);
         bool DeleteRobot(long id);
         bool PutHead(long id, HeadVO headMoved);
         bool PutLeftArm(long id, ArmVO leftArmMoved);

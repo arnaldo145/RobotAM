@@ -25,5 +25,17 @@ namespace MoroderWebApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult CreateRobot()
+        {
+            var robotId = _robotService.PostRobot();
+
+            if (robotId == 0)
+            {
+                return NoContent();
+            }
+
+            return RedirectToAction("Index", "Robot", new { id = robotId });
+        }
     }
 }
